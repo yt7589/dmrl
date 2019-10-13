@@ -23,17 +23,20 @@ def read_file_on_disk():
         f2.write('The content:中文语言模型')
     print('The End')
 
-def main():
-  print('DMRL v0.0.1 build 3')
-  #read_file_in_project()
-  read_file_on_disk()
-  '''
+def draw_matplotlib():
   x = np.linspace(0, 10, 100)
   fig = plt.figure()
   plt.plot(x, np.sin(x), '-')
   plt.plot(x, np.cos(x), '--')
-  plt.show()
-  '''
+  #plt.show()
+  plt.savefig('/content/drive/My Drive/dmrl/log/a1.png')
+
+
+def main():
+  print('DMRL v0.0.1 build 3')
+  #read_file_in_project()
+  #read_file_on_disk()
+  draw_matplotlib()
 
 if '__main__' == __name__:
   main()
