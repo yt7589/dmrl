@@ -14,6 +14,14 @@ def read_file_in_project():
     with open('a1.txt', 'r', encoding='utf-8') as f2:
         s2 = f2.read()
     print('f2:{0}'.format(s2))
+    
+def read_file_on_disk():
+    with open('/content/drive/My Drive/dmrl/data/t1.txt', 'r', encoding='utf-8') as fd:
+        s1 = fd.read()
+    print('s1:{0}'.format(s1))
+    with open('/content/drive/My Drive/dmrl/data/t2.txt', 'w', encoding='utf-8') as f2:
+        f2.write('The content:中文语言模型')
+    print('The End')
 
 def main():
   print('DMRL v0.0.1 build 2')
