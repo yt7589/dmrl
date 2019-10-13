@@ -17,11 +17,14 @@ def read_file_in_project():
 
 def main():
   print('DMRL v0.0.1 build 2')
+  read_file_in_project()
+  '''
   x = np.linspace(0, 10, 100)
   fig = plt.figure()
   plt.plot(x, np.sin(x), '-')
   plt.plot(x, np.cos(x), '--')
   plt.show()
+  '''
 
 if '__main__' == __name__:
   main()
