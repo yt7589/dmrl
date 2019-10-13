@@ -24,8 +24,9 @@ def read_file_on_disk():
     print('The End')
 
 def main():
-  print('DMRL v0.0.1 build 2')
-  read_file_in_project()
+  print('DMRL v0.0.1 build 3')
+  #read_file_in_project()
+  read_file_on_disk()
   '''
   x = np.linspace(0, 10, 100)
   fig = plt.figure()
