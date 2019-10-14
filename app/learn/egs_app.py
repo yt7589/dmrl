@@ -17,6 +17,14 @@ class EgsApp(object):
         train_loss(loss)
         train_accuracy(labels, predictions)
 
+    @staticmethod
+    @tf.function
+    def test_step(model, optimizer, loss_object, images, labels, test_loss, test_accuracy):
+        predictions = model(images)
+        t_loss = loss_object(labels, predictions)
+        test_loss(t_loss)
+        test_accuracy(labels, predictions)
+
     def startup(self):
         print('Expert Getting Start App v0.0.1')
         mnist = tf.keras.datasets.mnist
@@ -34,18 +42,12 @@ class EgsApp(object):
         train_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='train_accuracy')
         test_loss = tf.keras.metrics.Mean(name='test_loss')
         test_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='test_accuracy')
-        @tf.function
-        def test_step(images, labels):
-            predictions = model(images)
-            t_loss = loss_object(labels, predictions)
-            test_loss(t_loss)
-            test_accuracy(labels, predictions)
         EPOCHS = 5
         for epoch in range(EPOCHS):
             for images, labels in train_ds:
                 EgsApp.train_step(model, optimizer, loss_object, images, labels, train_loss, train_accuracy)
             for test_images, test_labels in test_ds:
-                test_step(test_images, test_labels)
+                test_step(model, optimizer, loss_object, test_images, test_labels, test_loss, test_accuracy)
             template = 'Epoch {}, Loss: {}, Accuracy: {}, Test Loss: {}, Test Accuracy: {}'
             print (template.format(epoch+1,
                          train_loss.result(),
