@@ -26,7 +26,7 @@ class EgsApp(object):
         test_accuracy(labels, predictions)
 
     def startup(self):
-        print('Expert Getting Start App v0.0.1')
+        print('Expert Getting Start App v0.0.2')
         mnist = tf.keras.datasets.mnist
         (x_train, y_train), (x_test, y_test) = mnist.load_data()
         x_train, x_test = x_train / 255.0, x_test / 255.0
@@ -47,7 +47,7 @@ class EgsApp(object):
             for images, labels in train_ds:
                 EgsApp.train_step(model, optimizer, loss_object, images, labels, train_loss, train_accuracy)
             for test_images, test_labels in test_ds:
-                test_step(model, optimizer, loss_object, test_images, test_labels, test_loss, test_accuracy)
+                EgsApp.test_step(model, optimizer, loss_object, test_images, test_labels, test_loss, test_accuracy)
             template = 'Epoch {}, Loss: {}, Accuracy: {}, Test Loss: {}, Test Accuracy: {}'
             print (template.format(epoch+1,
                          train_loss.result(),
