@@ -8,7 +8,7 @@ class EgsApp(object):
 
     @staticmethod
     @tf.function
-    def train_step(model, optimizer, images, labels, train_loss, train_accuracy):
+    def train_step(model, optimizer, loss_object, images, labels, train_loss, train_accuracy):
         with tf.GradientTape() as tape:
             predictions = model(images)
             loss = loss_object(labels, predictions)
