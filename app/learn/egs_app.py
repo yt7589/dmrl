@@ -66,5 +66,9 @@ class EgsApp(object):
         
     def get_sample(self, ds):
         idx = 10
-        X, Y = ds[10]
-        print('X:{0}; Y:{0}'.format(X.shape, Y.shape))
+        X = ds[0]
+        print('X:{0}'.format(X.shape))
+        Y = ds[1]
+        print('Y:{0}'.format(Y.shape))
+        X1 = X[idx]
+        print('X1:{0}'.format(X1.shape))
