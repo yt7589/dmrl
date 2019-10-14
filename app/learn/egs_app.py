@@ -43,7 +43,7 @@ class EgsApp(object):
         EPOCHS = 5
         for epoch in range(EPOCHS):
             for images, labels in train_ds:
-                EgsApp.train_step(model, optimizer, images, labels, train_loss, train_accuracy)
+                EgsApp.train_step(model, optimizer, loss_object, images, labels, train_loss, train_accuracy)
             for test_images, test_labels in test_ds:
                 test_step(test_images, test_labels)
             template = 'Epoch {}, Loss: {}, Accuracy: {}, Test Loss: {}, Test Accuracy: {}'
