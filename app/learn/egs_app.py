@@ -35,16 +35,15 @@ class EgsApp(object):
         train_ds = tf.data.Dataset.from_tensor_slices(
                     (x_train, y_train)).shuffle(10000).batch(32)
         test_ds = tf.data.Dataset.from_tensor_slices((x_test, y_test)).batch(32)
+        model = EgsModel()
         i_debug = 1
         if 1 == i_debug:
-            self.get_sample(test_ds)
+            self.get_sample(model, x_test, y_test)
             return
 
 
 
 
-
-        model = EgsModel()
         loss_object = tf.keras.losses.SparseCategoricalCrossentropy()
         optimizer = tf.keras.optimizers.Adam()
         train_loss = tf.keras.metrics.Mean(name='train_loss')
@@ -64,11 +63,11 @@ class EgsApp(object):
                          test_loss.result(),
                          test_accuracy.result()*100))
         
-    def get_sample(self, ds):
+    def get_sample(self, model, Xs, Ys):
         idx = 10
-        X = ds[0]
-        print('X:{0}'.format(X.shape))
-        Y = ds[1]
-        print('Y:{0}'.format(Y.shape))
-        X1 = X[idx]
-        print('X1:{0}'.format(X1.shape))
+        X0 = Xs[idx]
+        print('X0:{0}'.format(X0.shape))
+        X = X0[tf.newaxis, ...]
+        y = Ys[idx]
+        y_ = model([X])
+        print('y_:{0}'.format(y_))
