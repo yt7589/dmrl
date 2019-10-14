@@ -1,5 +1,6 @@
 #
 import tensorflow as tf
+import matplotlib.pyplot as plt
 from ann.learn.egs_model import EgsModel
 
 class EgsApp(object):
@@ -66,10 +67,14 @@ class EgsApp(object):
     def get_sample(self, model, Xs, Ys):
         idx = 10
         X0 = Xs[idx]
+        img_data = X0.reshape(28, 28) * 255
         print('X0:{0}'.format(X0.shape))
         X = X0[tf.newaxis, ...]
         print('X:{0}'.format(X.shape))
         y = Ys[idx]
-        print('y:{0}'.format(y.shape))
+        print('y:{0}'.format(y))
         y_ = model(X)
-        print('y_:{0}'.format(y_))
+        print('y_:{0}; {1}'.format(y_, np.argmax(y_)))
+
+        plt.imshow(img_data)
+        plt.savefig('/content/drive/My Drive/dmrl/log/a2.png')
