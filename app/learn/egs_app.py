@@ -68,6 +68,8 @@ class EgsApp(object):
         X0 = Xs[idx]
         print('X0:{0}'.format(X0.shape))
         X = X0[tf.newaxis, ...]
+        print('X:{0}'.format(X.shape))
         y = Ys[idx]
-        y_ = model([X])
+        print('y:{0}'.format(y.shape))
+        y_ = model(X)
         print('y_:{0}'.format(y_))
