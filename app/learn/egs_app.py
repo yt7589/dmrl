@@ -40,7 +40,7 @@ class EgsApp(object):
         model = EgsModel()
         i_debug = 1
         if 1 == i_debug:
-            self.get_sample(model, x_test, y_test)
+            self.get_sample(model, x_train, y_train)
             return
 
 
@@ -75,7 +75,7 @@ class EgsApp(object):
         y = Ys[idx]
         print('y:{0}'.format(y))
         y_ = model(X)
-        print('y_:{0}; {1}'.format(y_, np.argmax(y_)))
+        print('y_:{0}; {1}'.format(y_, np.argmax(y_[0])))
 
         plt.imshow(img_data)
         plt.savefig('/content/drive/My Drive/dmrl/log/a2.png')
