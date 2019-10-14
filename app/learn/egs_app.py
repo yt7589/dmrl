@@ -1,6 +1,7 @@
 #
-import tensorflow as tf
+import numpy as np
 import matplotlib.pyplot as plt
+import tensorflow as tf
 from ann.learn.egs_model import EgsModel
 
 class EgsApp(object):
